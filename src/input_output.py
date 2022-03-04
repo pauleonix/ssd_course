@@ -1,4 +1,6 @@
 import pandas as pd
+import numpy as np
+from typing import Tuple  # added for better type hints
 
 
 def read_table(
@@ -23,6 +25,31 @@ def read_table(
 
     return pd.read_csv(
         fname, index_col=idx_col, sep=sep, engine="python", **csv_read_kwargs
+    )
+
+
+def read_table_as_numpy(
+    fname: str, sep: str = r"(?<!\()\s\s+", pandas_read_kwargs={}
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """
+    Reads a data table as pandas DataFrame and then return a tuple the
+    values of the frame as c-contigious numpy array.
+
+
+    fname: str -> path to file
+    sep: str ->  default: r"(?<!\()\s\s+"  Regex-pattern marking the
+                 delimer of the file.
+    pandas_read_kwargs dict: -> Dictionary of key word arguments that
+                                is passed to pandas.read_csv()
+
+    Returns:
+    values as numpy.ndarray, index as numpy.ndarray, columns as numpy.ndarray
+    """
+    df = read_table(fname, sep, csv_read_kwargs=pandas_read_kwargs)
+    return (
+        np.ascontiguousarray(df.values),
+        np.array(df.index),
+        np.array(df.columns),
     )
 
 
