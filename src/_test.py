@@ -1,5 +1,6 @@
 import input_output as io
 import common
+import numerical
 import pytest
 
 
@@ -27,3 +28,17 @@ class Test_Common:
     def test_thresholding(self):
         thresholded = common.drop_constants(io.read_table("data/expec.t"))
         assert thresholded.shape == (101, 3)
+
+
+class Test_Numerical:
+    """Tests for the numerical module."""
+
+    @pytest.mark.parametrize("fname", ["./data/efield.t"])
+    def test_fft(self, fname):
+        df = io.read_table(fname)
+        assert numerical.fft(df).shape == (101, 1)
+
+    @pytest.mark.parametrize("fname", ["./data/efield.t"])
+    def test_fftfreq(self, fname):
+        df = io.read_table(fname)
+        len(common.fourier_freq(df)) == 101
