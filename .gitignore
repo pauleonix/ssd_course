@@ -1,3 +1,6 @@
 venv
 *.pdf
-*.csv
+*.pyc
+.vscode
+docs/build
+**tags
