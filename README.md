@@ -3,10 +3,13 @@
 ## Project HeiPollo
 
 ## Authors
+B. Gideon Bergheim
+Paul Große-Bley
 
-## Date
+Project started on: 2nd Feb 2022
 
 ## Version
+v 0.1
 
 ## Main features
 
