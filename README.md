@@ -19,6 +19,10 @@
 ## Bug tracker
 If you find any bugs or want to suggest additional features, please let us know here:
 [ssd_course/Issues](https://github.com/pauleonix/ssd_course/issues)
+
+## License
+```{include} ../../LICENSE.md
+```
 ## References
 Based on the course ["Scientific Software Development" ](https://github.com/ssciwr/sustainable_development_course)
 
