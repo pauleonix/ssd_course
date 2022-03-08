@@ -13,9 +13,18 @@ v 0.1
 
 ## Main features
 
-## Input data examples + validity range
+## Installation
 
 ## Step by step tutorial
+
+### Read data files
+
+#### Input data examples + validity range
+
+### Convert data
+
+
+### Plot data
 
 ## Scientific approach
 
