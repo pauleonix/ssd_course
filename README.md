@@ -3,10 +3,13 @@ Project started on: 2nd Feb 2022
 
 **Authors**
 B. Gideon Bergheim
+
 Paul Große-Bley
 
 **Version**
 v 0.1
+
+[Documentation](https://ssd-course.readthedocs.io/en/latest/)
 
 ## Main features
 
