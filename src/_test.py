@@ -1,4 +1,5 @@
 import input_output as io
+import common
 import pytest
 
 
@@ -15,3 +16,11 @@ class Test_IO:
     )
     def test_table_input(self, fname, expected_shape):
         assert io.read_table(fname).shape == expected_shape
+
+
+class Test_Common:
+    """Tests for the Common function mdule"""
+
+    def test_thresholding(self):
+        thresholded = common.drop_constants(io.read_table("data/expec.t"))
+        assert thresholded.shape == (101, 3)
