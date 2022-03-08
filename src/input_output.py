@@ -19,7 +19,7 @@ def read_table(
     pandas.DataFrame
     """
 
-    return pd.read_csv(fname, sep=sep, engine="python", **csv_read_kwargs)
+    return pd.read_csv(fname, header=0, sep=sep, engine="python", **csv_read_kwargs)
 
 
 def read_table_as_numpy(
@@ -40,6 +40,10 @@ def read_table_as_numpy(
     values as numpy.ndarray, index as numpy.ndarray, columns as numpy.ndarray
     """
     df = read_table(fname, sep, csv_read_kwargs=pandas_read_kwargs)
+    i_cols = "time"
+    if fname.endswith(".dat"):
+        i_cols = ["i", "j"]
+    df.set_index(i_cols, inplace=True)
     return (
         np.ascontiguousarray(df.values),
         np.array(df.index),
@@ -48,4 +52,5 @@ def read_table_as_numpy(
 
 
 if __name__ == "__main__":
-    pass
+    x = read_table_as_numpy("data\efield.t")
+    print(x[0])
