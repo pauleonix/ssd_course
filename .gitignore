@@ -2,3 +2,5 @@ venv
 *.pdf
 *.pyc
 .vscode
+docs/build
+**tags
