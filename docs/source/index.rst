@@ -12,6 +12,7 @@ Welcome to SSD Course's documentation!
 
    modules
    readme_link
+   license_link
 
 Indices and tables
 ==================
