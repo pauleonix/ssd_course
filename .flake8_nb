@@ -1,4 +1,4 @@
 [flake8_nb]
-ignore = E303
+ignore = E303,W605
 exclude = .git,__pycache__,doc,.ipynb_checkpoints,data
 max-line-length = 120
