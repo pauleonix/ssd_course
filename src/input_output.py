@@ -18,14 +18,8 @@ def read_table(
     Returns:
     pandas.DataFrame
     """
-    if fname.endswith(".dat"):  # special case for the dat file
-        idx_col = [0, 1]
-    else:
-        idx_col = 0
 
-    return pd.read_csv(
-        fname, index_col=idx_col, sep=sep, engine="python", **csv_read_kwargs
-    )
+    return pd.read_csv(fname, sep=sep, engine="python", **csv_read_kwargs)
 
 
 def read_table_as_numpy(
