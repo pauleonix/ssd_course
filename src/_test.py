@@ -4,6 +4,8 @@ import pytest
 
 
 class Test_IO:
+    """Tests for the input output module."""
+
     @pytest.mark.parametrize(
         "fname,expected_shape",
         [
@@ -15,11 +17,12 @@ class Test_IO:
         ],
     )
     def test_table_input(self, fname, expected_shape):
+        """Tests the import of the different test data."""
         assert io.read_table(fname).shape == expected_shape
 
 
 class Test_Common:
-    """Tests for the Common function mdule"""
+    """Tests for the Common function module"""
 
     def test_thresholding(self):
         thresholded = common.drop_constants(io.read_table("data/expec.t"))
