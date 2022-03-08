@@ -53,8 +53,3 @@ def read_table_as_numpy(
         np.array(df.index),
         np.array(df.columns),
     )
-
-
-if __name__ == "__main__":
-    x = read_table_as_numpy("data\efield.t")
-    print(x[0])
