@@ -1,41 +1,39 @@
-# Readme
+# Project HeiPollo
 
-## Project HeiPollo
-
-## Authors
+# Authors
 B. Gideon Bergheim
 Paul Große-Bley
 
 Project started on: 2nd Feb 2022
 
-## Version
+# Version
 v 0.1
 
-## Main features
+# Main features
+
+# Step by step tutorial
 
 ## Installation
 
-## Step by step tutorial
+## Read data files
 
-### Read data files
+### Input data examples + validity range
 
-#### Input data examples + validity range
-
-### Convert data
+## Convert data
 
 
-### Plot data
+## Plot data
 
-## Scientific approach
+# Scientific approach
 
-## Bug tracker
+# Bug tracker
 If you find any bugs or want to suggest additional features, please let us know here:
 [ssd_course/Issues](https://github.com/pauleonix/ssd_course/issues)
 
-## License
+# License
 ```{include} ../../LICENSE.md
 ```
-## References
+# References
 Based on the course ["Scientific Software Development" ](https://github.com/ssciwr/sustainable_development_course)
 
 ## Citations
