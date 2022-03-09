@@ -1,6 +1,7 @@
 """This module handles all specifically numerical analysis code."""
 import common
-import input_output as io
+
+# import input_output as io
 import pandas as pd
 import numpy as np
 
@@ -29,7 +30,7 @@ def fourier_transform(
         data = data.drop("time", axis=1)
     if drop_constant:
         data = common.drop_constants(data)
-    fft = np.fft.fft(data.values, axis=1)
+    fft = np.fft.fft(data.values[:, 0])
     if not complex:
         fft = np.real(fft)
     return fft
@@ -60,5 +61,4 @@ def fourier_freq(data: pd.DataFrame, time_column_name="time", fft_kwargs: dict =
 
 
 if __name__ == "__main__":
-    df = io.read_table("./data/efield.t")
-    print(len(fourier_freq(df)))
+    pass
