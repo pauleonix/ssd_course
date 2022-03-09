@@ -2,6 +2,7 @@
 Project started on: 2nd Feb 2022
 
 **Authors**
+
 B. Gideon Bergheim
 Paul Große-Bley
 
@@ -15,6 +16,13 @@ v 0.1
 ### Installation
 
 ### Read data files
+You can import data tables as pandas dataframes as follows:
+
+```python
+import heipollo.input_output as io
+filename="Path_to_file"
+io.read_table(filename)
+```
 
 #### Input data examples + validity range
 
