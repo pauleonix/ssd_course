@@ -36,7 +36,7 @@ class Test_Numerical:
     @pytest.mark.parametrize("fname", ["./data/efield.t"])
     def test_fft(self, fname):
         df = io.read_table(fname)
-        assert numerical.fourier_transform(df).shape == (101, 1)
+        assert numerical.fourier_transform(df).shape == (101,)
 
     @pytest.mark.parametrize("fname", ["./data/efield.t"])
     def test_fftfreq(self, fname):

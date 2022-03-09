@@ -1,5 +1,11 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import os
+
+import numerical
+
 from typing import Tuple  # added for better type hints
 
 
@@ -53,3 +59,25 @@ def read_table_as_numpy(
         np.array(df.index),
         np.array(df.columns),
     )
+
+
+def _create_plot_folder() -> None:
+    """Creates a plot folder if needed."""
+    directory = os.path.join(os.getcwd(), "/plots")
+    if not os.path.exists(directory):
+        os.mkdir(directory)
+
+
+def plot_fourier_frequency(data: pd.DataFrame, ax=None, **plt_kwargs):
+    """Creates a fourier frequency graph."""
+    _create_plot_folder()
+    if ax is None:
+        ax = plt.gca()
+    shift_freq = np.fft.fftshift(numerical.fourier_transform(data))
+    field_shift_freq = np.fft.fftshift(numerical.fourier_freq(data))
+    sns.plot(shift_freq, field_shift_freq, ax=ax, **plt_kwargs)
+    return ax
+
+
+if __name__ == "__main__":
+    pass
