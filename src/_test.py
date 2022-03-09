@@ -25,6 +25,8 @@ class Test_Input:
 
 
 class Test_Output:
+    """Test for al the output functions an graphs."""
+
     @pytest.fixture
     def setup_plot(self):
         df = io.read_table("./data/efield.t")
