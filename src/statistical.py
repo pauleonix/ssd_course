@@ -7,7 +7,7 @@ def sorted_pearson_corr(data: pd.DataFrame) -> pd.DataFrame:
 
     Calculate Pearson correlations between all pairs of distinct columns and
     sort them in descending order by their absolute value.
-    If there is a column named 'time' in data, it will be ignored.
+    Columns named 'time' or being constant (no variance) will be ignored.
 
     Args:
         data: pandas.DataFrame -> columns will be correlated
