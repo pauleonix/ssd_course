@@ -25,7 +25,7 @@ class Test_Input:
 
 
 class Test_Output:
-    """Test for al the output functions an graphs."""
+    """Test for all the output functions an graphs."""
 
     @pytest.fixture
     def setup_plot(self):
