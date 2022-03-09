@@ -2,9 +2,11 @@ import input_output as io
 import common
 import numerical
 import pytest
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 
 
-class Test_IO:
+class Test_Input:
     """Tests for the input output module."""
 
     @pytest.mark.parametrize(
@@ -20,6 +22,25 @@ class Test_IO:
     def test_table_input(self, fname, expected_shape):
         """Tests the import of the different test data."""
         assert io.read_table(fname).shape == expected_shape
+
+
+class Test_Output:
+    @pytest.fixture
+    def setup_plot(self):
+        df = io.read_table("./data/efield.t")
+        fig = plt.figure()
+        ax = io.plot_fourier_frequency(
+            df,
+            x_axis_label="Frequency",
+            y_axis_label="something",
+        )
+        return fig, ax
+
+    def test_fft_graph(self, setup_plot):
+        assert type(setup_plot[0]) == mpl.figure.Figure
+        assert setup_plot[0] == setup_plot[1].get_figure()
+        assert setup_plot[1].xaxis.label.get_text() == "Frequency"
+        assert setup_plot[1].yaxis.label.get_text() == "something"
 
 
 class Test_Common:

@@ -68,16 +68,37 @@ def _create_plot_folder() -> None:
         os.mkdir(directory)
 
 
-def plot_fourier_frequency(data: pd.DataFrame, ax=None, **plt_kwargs):
-    """Creates a fourier frequency graph."""
+def plot_fourier_frequency(
+    data: pd.DataFrame,
+    ax=None,
+    x_axis_label="Frequency",
+    y_axis_label=None,
+    **plt_kwargs
+):
+    """Creates a fourier frequency graph.
+
+    Args:
+        data: pandas.DataFrame containing the data.
+        ax: matplotlib axis (default = None) axis to draw the graph on. Will use
+        default axis if None is given.
+        x_axis_label: str (default = "Frequency") labet for the x-axis.
+        y_axis_label: str (default = None) labet for the y-axis.
+        **pltkwargs: key word arguments forwarded to seaborn.plot
+    """
     _create_plot_folder()
     if ax is None:
         ax = plt.gca()
     shift_freq = np.fft.fftshift(numerical.fourier_transform(data))
     field_shift_freq = np.fft.fftshift(numerical.fourier_freq(data))
-    sns.plot(shift_freq, field_shift_freq, ax=ax, **plt_kwargs)
+    sns.lineplot(x=field_shift_freq, y=shift_freq, ax=ax, **plt_kwargs)
+    ax.set_xlabel(x_axis_label)
+    ax.set_ylabel(y_axis_label)
     return ax
 
 
 if __name__ == "__main__":
-    pass
+    data = read_table("./data/efield.t")
+    fig = plt.figure()
+    ax = plot_fourier_frequency(data)
+    print(ax.xaxis.label.get_text())
+    plt.show()
