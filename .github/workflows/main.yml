@@ -40,4 +40,9 @@ jobs:
     - name: run flake8 linter
       run: flake8
     - name: Run pytest
-      run: pytest
+      run: pytest --cov= --cov-report xml
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: coverage.xml
