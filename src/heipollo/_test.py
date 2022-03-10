@@ -1,6 +1,7 @@
-import input_output as io
-import common
-import statistical as stat
+import heipollo.input_output as io
+
+# import heipollo.common
+import heipollo.statistical as stat
 import numpy as np
 from numpy.random import default_rng
 import pandas as pd
@@ -23,12 +24,12 @@ class Test_IO:
         assert io.read_table(fname).shape == expected_shape
 
 
-class Test_Common:
-    """Tests for the Common function mdule"""
+# class Test_Common:
+#     """Tests for the Common function mdule"""
 
-    def test_thresholding(self):
-        thresholded = common.drop_constants(io.read_table("data/expec.t"))
-        assert thresholded.shape == (101, 3)
+#     def test_thresholding(self):
+#         thresholded = common.drop_constants(io.read_table("data/expec.t"))
+#         assert thresholded.shape == (101, 3)
 
 
 class Test_Statistical:
