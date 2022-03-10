@@ -41,9 +41,8 @@ jobs:
       run: flake8
     - name: Run pytest
       run: pytest --cov=input_output --cov-report xml
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: coverage.xml
-        parallel: True
+    #- name: Coveralls
+    #  uses: coverallsapp/github-action@master
+    #  with:
+    #    github-token: ${{ secrets.GITHUB_TOKEN }}
+    #    path-to-lcov: coverage.xml
