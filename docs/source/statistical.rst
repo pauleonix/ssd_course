@@ -1,5 +1,5 @@
-statsitical
-===========
+statistical module
+==================
 
 .. automodule:: statistical
    :members:
