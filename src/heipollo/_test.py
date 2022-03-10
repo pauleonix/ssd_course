@@ -1,15 +1,19 @@
 import heipollo.input_output as io
-
-# import heipollo.common
+import heipollo.common as common
 import heipollo.statistical as stat
+import heipollo.numerical as numerical
 import numpy as np
 from numpy.random import default_rng
 import pandas as pd
 from collections import Counter
 import pytest
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 
 
-class Test_IO:
+class Test_Input:
+    """Tests for the input output module."""
+
     @pytest.mark.parametrize(
         "fname,expected_shape",
         [
@@ -21,15 +25,51 @@ class Test_IO:
         ],
     )
     def test_table_input(self, fname, expected_shape):
+        """Tests the import of the different test data."""
         assert io.read_table(fname).shape == expected_shape
 
 
-# class Test_Common:
-#     """Tests for the Common function mdule"""
+class Test_Output:
+    """Test for all the output functions an graphs."""
 
-#     def test_thresholding(self):
-#         thresholded = common.drop_constants(io.read_table("data/expec.t"))
-#         assert thresholded.shape == (101, 3)
+    @pytest.fixture
+    def setup_plot(self):
+        df = io.read_table("./data/efield.t")
+        fig = plt.figure()
+        ax = io.plot_fourier_frequency(
+            df,
+            x_axis_label="Frequency",
+            y_axis_label="something",
+        )
+        return fig, ax
+
+    def test_fft_graph(self, setup_plot):
+        assert type(setup_plot[0]) == mpl.figure.Figure
+        assert setup_plot[0] == setup_plot[1].get_figure()
+        assert setup_plot[1].xaxis.label.get_text() == "Frequency"
+        assert setup_plot[1].yaxis.label.get_text() == "something"
+
+
+class Test_Common:
+    """Tests for the Common function module"""
+
+    def test_thresholding(self):
+        thresholded = common.drop_constants(io.read_table("data/expec.t"))
+        assert thresholded.shape == (101, 3)
+
+
+class Test_Numerical:
+    """Tests for the numerical module."""
+
+    @pytest.mark.parametrize("fname", ["./data/efield.t"])
+    def test_fft(self, fname):
+        df = io.read_table(fname)
+        assert numerical.fourier_transform(df).shape == (101,)
+
+    @pytest.mark.parametrize("fname", ["./data/efield.t"])
+    def test_fftfreq(self, fname):
+        df = io.read_table(fname)
+        assert len(numerical.fourier_freq(df)) == 101
 
 
 class Test_Statistical:
