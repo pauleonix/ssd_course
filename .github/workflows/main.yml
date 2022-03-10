@@ -40,7 +40,8 @@ jobs:
     - name: run flake8 linter
       run: flake8
     - name: Run pytest
-      run: pytest --cov=heipollo --cov-report xml
+      run: pytest
+      # run: pytest --cov=heipollo --cov-report xml # fails!
     #- name: Coveralls
     #  uses: coverallsapp/github-action@master
     #  with:
