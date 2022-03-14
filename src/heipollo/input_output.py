@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-import numerical
+import heipollo.numerical as numerical
 
 from typing import Tuple  # added for better type hints
 

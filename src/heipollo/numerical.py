@@ -1,5 +1,5 @@
 """This module handles all specifically numerical analysis code."""
-import common
+import heipollo.common as common
 
 # import input_output as io
 import pandas as pd
